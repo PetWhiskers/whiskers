@@ -1,0 +1,13 @@
+
+/*<!-- Style to fix the issue of text extending past panel length -->*/
+.panel-body a {
+  word-break: break-all;
+}
+
+.scrollIt {
+  height: 400px;
+  overflow: scroll;
+}
+body {
+  overflow-x: initial;
+}*
