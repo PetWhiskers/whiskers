@@ -10,4 +10,14 @@
 }
 body {
   overflow-x: initial;
-}*
+}
+
+.jumbotron {
+      background-image: url("../images/pancho.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      text-shadow: black 0.3em 0.3em 0.3em;
+      background-position: center top;
+      /*background-size:auto!important;*/
+      height: 600px;
+    }
