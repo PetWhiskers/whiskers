@@ -1,22 +1,25 @@
-<!-- Note to self: Using template from "NYT Best Solution" file  as a starter->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
   <meta charset="UTF-8">
-  <title>New York Times Search</title>
-  <!-- Bootswatch Styling for Improving the Aesthetics -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
 
-  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+  <!-- Mobile Compatibility and screen re-sizing-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- react script -->
+      <script src="https://fb.me/react-15.2.1.js"></script>
+ <!-- react dom script-->
+      <script src="https://fb.me/react-dom-15.2.1.js"></script>
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Font Awesome CSS Icons for glyphicons-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Google Fonts Link-->
+  <link href="">
+  <!--CSS Stylesheet-->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>[TBD - "whiskers -- Final Project"]</title>
 
-  <!-- Style to fix the issue of text extending past panel length -->
-  <style>
-    .panel-body a {
-      word-break: break-all;
-    }
-  </style>
+
 </head>
 
 <body>
@@ -108,7 +111,7 @@
 
         <!-- Line Break followed by closing -->
         <hr>
-        <h5 class="text-center"><small>Made by Ahmed with lots and lots of <i class="fa fa-heart"></i></small></h5>
+        <h5 class="text-center"><small> <i class="fa fa-heart"></i></small></h5>
 
       </div>
     </div>
@@ -118,9 +121,21 @@
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
 
+  <!--I'm not sure we need this particular javascript script -->
+<script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <!-- Code to the JavaScript File -->
   <script src="NYTCode.js"></script>
 
-</body>
+
+  <!-- This is where React will deploy the contents it generates -->
+  <div id="app"></div>
+
+
+
+  <!-- All of our JS code will be transpiled into this bundle.js file -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="bundle.js"></script>
+  </body>
 
 </html>
