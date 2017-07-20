@@ -1,8 +1,6 @@
 // THIS IS AN EXAMPLE ONLY "STARTER FILE"!!!!!
 
-
 import React from "react";
-
 import QueryItem from "./QueryItem";
 import Saved from "./Saved";
 
