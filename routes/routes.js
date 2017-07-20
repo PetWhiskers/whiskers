@@ -1,7 +1,7 @@
 //Note to Team from JM: This is populated for convenience of referece only -- Need to conform to apropriate model for the final project.
 
 const express = require("express");
-const Article = require("../models/______");//add ,model
+const Article = require("../models/PetsSchema");//add ,model
 const Article = require("../models/______");
 const Article = require("../models/______")
 

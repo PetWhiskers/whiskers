@@ -22,7 +22,7 @@
 
 <body>
 
-  
+
   <!-- Main Bootstrap Search -->
   <div class="container">
 
@@ -44,18 +44,21 @@
             <h3 class="panel-title"><strong><i class=""></i>What Kind of Pet Are You Looking For?</strong></h3>
           </div>
           <div class="panel-body">
-            <!-- Form for handling the inputs. We can add more input forms-->
+            <!-- Form for handling the inputs. We can add more input fields-->
             <form role="form">
 
               <!-- Type of Pet - depending on how we can extract info, we might want to add age -- young v. old, or by years-->
               <div class="form-group">
-                <label for="pet-type">Type of Pet</label>
+                <label for="pet_type">Type of Pet</label>
                 <select class="form-control" id="[tbd]">
                   <!-- <option value="blank"></option> -->
-              <option value="Dog">Dog</option>
-              <option value="Cat" selected>Cat</option>
-              <option value="Other" selected>Other</option>
-              <!-- Note that "Other can be broken down further - bird, reptile, etc, depending on query" -->
+              <option value="dog">Dog</option>
+              <option value="cat" selected>Cat</option>
+              <option value="bird" selected>Bird</option>
+              <option value="horse">Horse</option>
+              <option value="barnyard">Barnyard</option>
+              <option value="reptile" selected>Scales, Fins and Others</option>
+              <option value="smallfurry" selected>Small and Furry (e.g., hamster, ferret)</option>
             </select>
               </div>
 
@@ -63,21 +66,20 @@
               <div class="form-group">
                 <label for="gender">Gender</label>
                 <select class="form-control" id="[tbd]">
-              <option value="Male">Male</option>
-              <option value="Female" selected>Female</option>
-              <option value="Either">Either</option>
+              <option value="M">Male</option>
+              <option value="F" selected>Female</option>
+              <option value="sex">Any</option>
             </select>
               </div>
 
               <!-- number of records that the user wants to retrieve  -->
               <div class="form-group">
-                <label for="pwd">Number of Pets to View:</label>
+                <label for="size">Size:</label>
                 <select class="form-control" id="[tbd]">
-              <option value="1">1</option>
-              <!-- Setting the option for 5 as default -->
-              <option value="5" selected>5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
+              <option value="S">Small</option>
+              <option value="M" selected>Medium</option>
+              <option value="L">Large</option>
+              <option value="XL">Extra-large</option>
             </select>
               </div>
               <!-- ZIP Code -->
