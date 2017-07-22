@@ -6,11 +6,8 @@ var mongoose = require("mongoose");
 // var promise = mongoose.connect('mongodb://localhost/myapp', {
 //   useMongoClient: true,
 
-module.exports = mongoose.connect(process.env.MONGODB_URI || ("mogodb://heroku_ww9dbxjw:bq6umoritesqhk01na8jqc63m4@ds161742.mlab.com:61742/heroku_ww9dbxjwmongodb://heroku_q704sxx4:ifgiglkhn5je05sm3v3nt3othn@ds157342.mlab.com:57342/heroku_q704sxx4"), {useMongoClient: true});
+module.exports = mongoose.connect(process.env.MONGODB_URI || ("mongodb://heroku_gslk7jxf:6ue3ff9p2t1vlq0l22n08c3he6@ds153652.mlab.com:53652/heroku_gslk7jxf "), {useMongoClient: true});
 
-
-
-// Note to self: (JM)
 
 //JM's Heroku app info:
 //aqueous-oasis-11685... free
