@@ -6,7 +6,7 @@ export default class Random extends React.Component {
 			<div className="container">
 				<div className="row">
 					<div className="col-xs-8">
-						<h1>{this.props.name}</h1>
+						<h1>{this.props.names[0]}</h1>
 						<img src={this.props.img} />
 					</div>
 				</div>

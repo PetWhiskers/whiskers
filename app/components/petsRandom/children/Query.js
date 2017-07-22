@@ -17,26 +17,31 @@ export default class Query extends React.Component {
 
 	search(event) {
 		event.preventDefault();
-		let url = "http://api.petfinder.com/pet.getRandom";
-		url += "?key=";
-		url += "&animal=";
-		url += $("input:checked").attr("id");
-		url += "&location=";
-		url += $("#location").val();
-		url += "&format=json&output=basic";
-		console.log(url);
-		console.log(this.state);
-		axios.get(url)
-			.then(function(result) {
-				console.log(result);
-				this.setState({ 
-					name: result.data.petfinder.pet.name.$t,
-					img: result.data.petfinder.pet.media.photos.photo[3].$t
+		var imgs = [];
+		var names = [];
+		for (let i = 0; i<10; i++) {
+			let url = "http://api.petfinder.com/pet.getRandom";
+			url += "?key=";
+			url += "&animal=";
+			url += $("input:checked").attr("id");
+			url += "&location=";
+			url += $("#location").val();
+			url += "&format=json&output=basic";
+			console.log(url);
+			console.log(this.state);
+			axios.get(url)
+				.then(function(result) {
+					names.push(result.data.petfinder.pet.name.$t);
+					imgs.push(result.data.petfinder.pet.media.photos.photo[3].$t);
+				})
+				.catch(function(error) {
+					console.log(error);
 				});
-			}.bind(this))
-			.catch(function(error) {
-				console.log(error);
-			}.bind(this));
+		}
+		this.setState({
+			imgs: imgs,
+			names: names
+		});
 	}
 
 	render() {
@@ -62,7 +67,7 @@ export default class Query extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<Random name={this.state.name} img={this.state.img} />
+					<Random names={this.state.names} imgs={this.state.imgs} />
 				</div>
 			</div>
 		)
