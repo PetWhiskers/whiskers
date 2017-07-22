@@ -9,8 +9,8 @@ export default class Query extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "",
-			img: ""
+			names: "",
+			imgs: ""
 		};
 		this.search = this.search.bind(this);
 	}
@@ -27,21 +27,21 @@ export default class Query extends React.Component {
 			url += "&location=";
 			url += $("#location").val();
 			url += "&format=json&output=basic";
-			console.log(url);
-			console.log(this.state);
 			axios.get(url)
 				.then(function(result) {
 					names.push(result.data.petfinder.pet.name.$t);
 					imgs.push(result.data.petfinder.pet.media.photos.photo[3].$t);
-				})
+					if (imgs.length == 10) {
+						this.setState({
+							imgs: imgs,
+							names: names
+						});
+					}
+				}.bind(this))
 				.catch(function(error) {
 					console.log(error);
 				});
 		}
-		this.setState({
-			imgs: imgs,
-			names: names
-		});
 	}
 
 	render() {
