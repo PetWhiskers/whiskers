@@ -2,26 +2,19 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let ArticleSchema = mongoose.Schema({
-  title: String,
-  articleId:String,
-  synopsis: String,
-  date: String,
-  url: String
+let RandomPetSchema = mongoose.Schema({
+  age: String,
+  city: String,
+  description: String,
+  email: String,
+  name: String,
+  sex: String,
+  size: String,
+  state: String,
+  type: String
 });
 
-ArticleSchema.statics.gethistory = function(){
-  return this.find();
-};
+var RandomPet = mongoose.model("RandomPets", RandomPetSchema);
 
-ArticleSchema.statics.addArticle = function(article){
-  return this.create(article);
-};
+module.exports = RandomPet;
 
-ArticleSchema.statics.removeArticle = function(articleId){
-  return this.findOneAndRemove(articleId);
-};
-
-let Article = mongoose.model("Article",ArticleSchema);
-
-module.exports = Article;

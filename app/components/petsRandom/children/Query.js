@@ -9,16 +9,14 @@ export default class Query extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			names: "",
-			imgs: ""
+			randomPets: ""
 		};
 		this.search = this.search.bind(this);
 	}
 
 	search(event) {
 		event.preventDefault();
-		var imgs = [];
-		var names = [];
+		let randomPets = [];
 		for (let i = 0; i<10; i++) {
 			let url = "http://api.petfinder.com/pet.getRandom";
 			url += "?key=";
@@ -29,12 +27,11 @@ export default class Query extends React.Component {
 			url += "&format=json&output=basic";
 			axios.get(url)
 				.then(function(result) {
-					names.push(result.data.petfinder.pet.name.$t);
-					imgs.push(result.data.petfinder.pet.media.photos.photo[3].$t);
-					if (imgs.length == 10) {
+					console.log(result);
+					randomPets.push(result);
+					if (randomPets.length == 10) {
 						this.setState({
-							imgs: imgs,
-							names: names
+							randomPets: randomPets
 						});
 					}
 				}.bind(this))
@@ -67,7 +64,7 @@ export default class Query extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<Random names={this.state.names} imgs={this.state.imgs} />
+					<Random randomPets={this.state.randomPets} />
 				</div>
 			</div>
 		)
