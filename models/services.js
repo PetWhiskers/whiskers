@@ -2,26 +2,27 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let ArticleSchema = mongoose.Schema({
-  title: String,
-  articleId:String,
-  synopsis: String,
-  date: String,
-  url: String
+let ServicesSchema = mongoose.Schema({
+// which api are we going to use?
+  // title: String,
+  // articleId:String,
+  // synopsis: String,
+  // date: String,
+  // url: String
 });
 
-ArticleSchema.statics.gethistory = function(){
+ServicesSchema.statics.gethistory = function(){
   return this.find();
 };
 
-ArticleSchema.statics.addArticle = function(article){
+ServicesSchema.statics.addArticle = function(service){
   return this.create(article);
 };
 
-ArticleSchema.statics.removeArticle = function(articleId){
-  return this.findOneAndRemove(articleId);
+ServicesSchema.statics.removeArticle = function(serviceId){
+  return this.findOneAndRemove(serviceId);
 };
 
-let Article = mongoose.model("Article",ArticleSchema);
+let Service = mongoose.model("Service",ServicesSchema);
 
-module.exports = Article;
+module.exports = Service;
