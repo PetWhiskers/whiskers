@@ -1,26 +1,39 @@
 // For WHISKERS
 // dependencies
+// Include Server Dependencies
+var express = require("express");
+var bodyParser = require("body-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
 
-// var express = require("express");
-const express = require("express");
+// Require Schemas
+var Pets = require("./server/pets");
 
-// var bodyParser = require("body-parser");
-bodyParser = require("body-parser");
-
-// var path = require("path");
-let path = require("path");
-
-// initializes express
-// Note to self: having trouble between using "var" and "let" --fix
-let app = express();
+// Create Instance of Express
+var app = express();
 const PORT = process.env.PORT || 3000;
 
+// templated "listen"
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+});
+
+// Run Morgan for Logging
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(express.static("public"));
+
+
 // var mongoose = require("mongoose");
-let mongoose = require("mongoose");
+var mongoose = require("mongoose");
 // sets mongoose to leverage Promises
 mongoose.Promise = Promise;
 // isolate mongo configuration and heroku info
-let db = require("./mongoConfig");
+var db = require("./mongoConfig");
 db = mongoose.connection;
 
 // Use next  line  to dropDatabase to clear db, but need to delete the line of code if you want the db to remain thereafter:
@@ -30,24 +43,61 @@ db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   console.log("Mongoose connection successful.");
-  let queries = require("./routes/routes");
-  app.use(queries);
-});
-
-// templated express and static // serves static content from the "public" directory
-app.use(express.static(path.join(__dirname, "node_modules")));
-app.use(express.static(path.join(__dirname, "public")));
-// parses data
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// templated "listen"
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  // var queries = require("./routes/routes");
+  // app.use(queries);
 });
 
 
+// / Route to get all saved pets
+app.get("/api/saved", function(req, res) {
 
+  Pet.find({})
+    .exec(function(err, doc) {
+
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
+// Route to add an article to saved list
+app.post("/api/saved", function(req, res) {
+  var newArticle = new Pet(req.body);
+
+  console.log(req.body);
+
+  newPet.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+// Route to delete an article from saved list
+app.delete("/api/saved/", function(req, res) {
+
+  var url = req.param("url");
+
+  Pet.find({ url: url }).remove().exec(function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send("Deleted");
+    }
+  });
+});
+
+// Any non API GET routes will be directed to our React App and handled by React Router
+app.get("*", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 //Other attempts
 //
