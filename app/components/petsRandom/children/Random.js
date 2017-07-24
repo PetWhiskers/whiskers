@@ -41,12 +41,27 @@ export default class Random extends React.Component {
 
 	savePet(event) {
 		event.preventDefault();
-		axios.post(path.join(__dirname, "savePet", this.props.randomPets[this.state.petCount].data.petfinder.pet.age.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.email.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.description.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.city.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.state.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.name.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.sex.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.size.$t, this.props.randomPets[this.state.petCount].data.petfinder.pet.animal.$t))
-			.then(function(result) {
+		axios.post(path.join(__dirname, "savePet"), {
+				age: this.props.randomPets[this.state.petCount].data.petfinder.pet.age.$t,
+				city: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.city.$t,
+				description: this.props.randomPets[this.state.petCount].data.petfinder.pet.description.$t,
+				email: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.email.$t,
+				name: this.props.randomPets[this.state.petCount].data.petfinder.pet.name.$t,
+				sex: this.props.randomPets[this.state.petCount].data.petfinder.pet.sex.$t,
+				size: this.props.randomPets[this.state.petCount].data.petfinder.pet.size.$t,
+				state: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.state.$t,
+				type: this.props.randomPets[this.state.petCount].data.petfinder.pet.animal.$t
+			}).then(function(result) {
 				console.log(result);
 			}.bind(this)).catch(function(error) {
 				console.log(error);
 			});
+		$("#petImg").attr("class", "animate");
+		let next = (this.state.petCount + 1);
+		this.setState({ petCount: next });
+		setTimeout(function() {
+			$("#petImg").attr("class", "still");
+		}, 2000);
 	}
 
 	render() {
@@ -59,7 +74,7 @@ export default class Random extends React.Component {
 							<br />
 							<img id="petImg" className="still" src={this.props.randomPets[this.state.petCount].data.petfinder.pet.media.photos.photo[3].$t} />
 							<br />
-							<span className="glyphicon glyphicon-heart" onClick={this.nextPet} onClick={this.savePet} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span className="glyphicon glyphicon-remove" onClick={this.nextPet} />
+							<span className="glyphicon glyphicon-heart" onClick={this.savePet} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span className="glyphicon glyphicon-remove" onClick={this.nextPet} />
 						</div>
 					</div>
 				</div>
