@@ -27,7 +27,10 @@ var PetsSchema = new Schema({
   },
   contactemail: {
   type:  String
-}
+},
+location: {
+  type: String
+},
 });
 
 var Pet = mongoose.model("Pets",PetsSchema);
