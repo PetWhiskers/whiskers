@@ -13,10 +13,8 @@ import Saved from "./components/Saved";
 
 // This code here allows us to render our main component (in this case Parent)
 ReactDOM.render(
-  // <div>
-  //   <Header primaryTitle="Pets" primarySub="Using React JS"   />
-  //   <SearchList headerName="Search" />
-  // </div>
-  //   , document.getElementById("app"));
-  //
-  //
+  <div>
+    <Header primaryTitle="Pets" primarySub=""   />
+    <SearchList headerName="Search" />
+  </div>
+    , document.getElementById("app"));
