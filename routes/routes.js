@@ -1,14 +1,14 @@
 //Note to Team from JM: This is populated for convenience of referece only -- Need to conform to apropriate model for the final project.
 
 const express = require("express");
-const Pet = require("../models/PetsSchema");//add ,model
-// const Article = require("../models/______");
-// const Article = require("../models/______")
+const Article = require("../models/PetsSchema");//add ,model
+const Article = require("../models/______");
+const Article = require("../models/______")
 
 let router = express.Router();
 
 router.get("/gethistory",function(req,res) {
-  Pet.gethistory()
+  Article.gethistory()
   .then(function(results){
     res.status(200)
     .send(results);
@@ -18,8 +18,8 @@ router.get("/gethistory",function(req,res) {
     .send(error)
   });
 });
-// JM needs to fix this
-router.post("/savepet",function(req,res) {
+
+router.post("/savearticle",function(req,res) {
   let title = req.body.title;
   let snippet = req.body.snippet;
   let date = req.body.date;
@@ -27,8 +27,7 @@ router.post("/savepet",function(req,res) {
   let articleId = req.body.articleId;
   console.log(req.body);
 
-// JM needs to conform to Schema
-  Pet.addArticle({title: title, synopsis:snippet, date: date, url:url, articleId:articleId})
+  Article.addArticle({title: title, synopsis:snippet, date: date, url:url, articleId:articleId})
   .then(function(){
     res.status(200)
     .send("OK");
@@ -53,11 +52,23 @@ router.post("/removearticle",function(req,res) {
   });
 });
 
-// Add Key info here.
 router.get("/getkey",function(req,res) {
   res.status(200)
-  // .send(process.env.Petfinder Key);
-  .send("5974a8605d2508662e64c88fa5150fb9");
+  // .send(process.env.NYT);
+  .send("746af9a2fde74e209e90ecaa5005b7a9");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

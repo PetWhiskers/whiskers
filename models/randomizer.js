@@ -1,31 +1,21 @@
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var RandomizerSchema = new Schema({
-  animal: {
-type: String
-},
-animalId: {
+let RandomPetSchema = mongoose.Schema({
+  age: String,
+  city: String,
+  description: String,
+  email: String,
+  image: String,
+  name: String,
+  sex: String,
+  size: String,
+  state: String,
   type: String
-},
-location: {
-  type: String
-},
 });
 
-RandomizerSchema.statics.gethistory = function(){
-  return this.find();
-};
+var RandomPet = mongoose.model("RandomPets", RandomPetSchema);
 
-RandomizerSchema.statics.addRandomizer = function(animal){
-  return this.create(article);
-};
+module.exports = RandomPet;
 
-RandomizerSchema.statics.removeRandomizer = function(animalId){
-  return this.findOneAndRemove(animaIId);
-};
-
-let Random = mongoose.model("Random",RandomizerSchema);
-
-module.exports = Randomizer;
