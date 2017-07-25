@@ -7,6 +7,7 @@ let RandomPetSchema = mongoose.Schema({
   city: String,
   description: String,
   email: String,
+  image: String,
   name: String,
   sex: String,
   size: String,

@@ -20,7 +20,18 @@ export default class Random extends React.Component {
 				console.log(results);
 				let likedPets = $("<div>");
 				for (let i = 0; i < results.data.length; i++) {
-					likedPets.append("Name : " + results.data[i].name);
+					likedPets.append("Name : " + results.data[i].name + "<br>");
+					let likedPetImg = $("<img>");
+					likedPetImg.attr("src", results.data[i].image);
+					likedPets.append(likedPetImg);
+					likedPets.append("<br>");
+					likedPets.append("Type of Animal: " + results.data[i].type + "<br>");
+					likedPets.append("Age: " + results.data[i].age + "<br>");
+					likedPets.append("Sex: " + results.data[i].sex + "<br>");
+					likedPets.append("Size: " + results.data[i].size + "<br>");
+					likedPets.append("Description: " + results.data[i].description + "<br>");
+					likedPets.append("Location: " + results.data[i].city + ", " + results.data[i].state + "<br>");
+					likedPets.append("Contact Email: " + results.data[i].email + "<br><br>");
 				}
 				console.log(likedPets);
 				$("#likedPetsDiv").html(likedPets);
@@ -33,8 +44,8 @@ export default class Random extends React.Component {
 		event.preventDefault();
 		$("#petImg").attr("class", "animate");
 		let next = (this.state.petCount + 1);
-		this.setState({ petCount: next });
 		if (next !== 10) {
+			this.setState({ petCount: next });
 			setTimeout(function() {
 				$("#petImg").attr("class", "still");
 			}, 2000);
@@ -53,6 +64,7 @@ export default class Random extends React.Component {
 				city: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.city.$t,
 				description: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.description.$t,
 				email: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.email.$t,
+				image: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t,
 				name: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.name.$t,
 				sex: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.sex.$t,
 				size: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.size.$t,
@@ -65,10 +77,17 @@ export default class Random extends React.Component {
 			});
 		$("#petImg").attr("class", "animate");
 		let next = (this.state.petCount + 1);
-		this.setState({ petCount: next });
-		setTimeout(function() {
-			$("#petImg").attr("class", "still");
-		}, 2000);
+		if (next !== 10) {
+			this.setState({ petCount: next });
+			setTimeout(function() {
+				$("#petImg").attr("class", "still");
+			}, 2000);
+		} else if (next == 10) {
+			$(".glyphicon").css("display", "none");
+			$("#petImg").css("display", "none");
+			$("#petName").css("display", "none");
+			this.getLikedPets();
+		}
 	}
 
 	render() {
