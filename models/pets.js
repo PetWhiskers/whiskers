@@ -1,37 +1,21 @@
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-
-var PetsSchema = new Schema({
-  animal: {
-    type: String
-  },
-  animalName: {
-    type: String
-  },
-  breed:  {
+let PetsSchema = mongoose.Schema({
+  animal: String,
+  age: String,
+  city: String,
+  breed: String,
+  description: String,
+  email: String,
+  image: String,
+  name: String,
+  sex: String,
+  size: String,
+  state: String,
   type: String
-},
-  age: {
-    type: String
-  },
-  description: {
-    type: String
-  },
-  url: {
-    type: String
-  },
-  sex: {
-    type: String
-  },
-  contactemail: {
-  type:  String
-},
-location: {
-  type: String
-},
 });
 
-var Pet = mongoose.model("Pets",PetsSchema);
+var Pets = mongoose.model("Pets", PetsSchema);
 
 module.exports = Pets;
