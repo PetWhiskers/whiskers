@@ -6,8 +6,7 @@ var PetsSchema = new Schema({
   animal: {
     type: String
   },
-
-  animalId: {
+  animalName: {
     type: String
   },
   breed:  {
