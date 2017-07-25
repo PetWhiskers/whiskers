@@ -10,9 +10,12 @@ bodyParser = require("body-parser");
 // var path = require("path");
 let path = require("path");
 
+// const RandomPet = require("./models/pets.js");
+const Pet = require("./models/pets.js");
+
 // initializes express
 // Note to self: having trouble between using "var" and "let" --fix
-let app = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 // var mongoose = require("mongoose");

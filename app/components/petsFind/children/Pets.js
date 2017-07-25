@@ -3,7 +3,7 @@ import React from "react";
 const path = require("path");
 const axios = require("axios");
 
-export default class Random extends React.Component {
+export default class Pets extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -60,16 +60,16 @@ export default class Random extends React.Component {
 	savePet(event) {
 		event.preventDefault();
 		axios.post("/savePet", {
-				age: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.age.$t,
-				city: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.city.$t,
-				description: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.description.$t,
-				email: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.email.$t,
-				image: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t,
-				name: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.name.$t,
-				sex: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.sex.$t,
-				size: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.size.$t,
-				state: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.state.$t,
-				type: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.animal.$t
+				age: this.props.pets[this.state.petCount].data.petfinder.pets.pet.age.$t,
+				city: this.props.pets[this.state.petCount].data.petfinder.pets.pet.contact.city.$t,
+				description: this.props.pets[this.state.petCount].data.petfinder.pets.pet.description.$t,
+				email: this.props.pets[this.state.petCount].data.petfinder.pets.pet.contact.email.$t,
+				image: this.props.pets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t,
+				name: this.props.pets[this.state.petCount].data.petfinder.pets.pet.name.$t,
+				sex: this.props.pets[this.state.petCount].data.petfinder.pets.pet.sex.$t,
+				size: this.props.pets[this.state.petCount].data.petfinder.pets.pet.size.$t,
+				state: this.props.pets[this.state.petCount].data.petfinder.pets.pet.contact.state.$t,
+				type: this.props.pets[this.state.petCount].data.petfinder.pets.pet.animal.$t
 			}).then(function(result) {
 				console.log(result);
 			}.bind(this)).catch(function(error) {
@@ -91,14 +91,14 @@ export default class Random extends React.Component {
 	}
 
 	render() {
-		if (this.props.randomPets !== "") {
+		if (this.props.pets !== "") {
 			return (
 				<div className="container">
 					<div className="row">
-						<div className="col-xs-8">
-							<h1 id="petName">{this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.name.$t}</h1>
+						<div className="col-md-6">
+							<h1 id="petName">{this.props.pets[this.state.petCount].data.petfinder.pets.pet.name.$t}</h1>
 							<br />
-							<img id="petImg" className="still" src={this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t} />
+							<img id="petImg" className="still" src={this.props.pets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t} />
 							<br />
 							<span className="glyphicon glyphicon-heart" onClick={this.savePet} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span className="glyphicon glyphicon-remove" onClick={this.nextPet} />
 							<div id="likedPetsDiv"></div>

@@ -3,7 +3,9 @@
 // Include React dependencies
 import React from "react";
 import ReactDOM from "react-dom";
-import Main from "./components/petsRandom/Main.js";
+import Main from "./components/petsFind/Main.js";
+// import Main from "./components/petsRandom/Main.js";
+
 
 // Include the main Parent component
 

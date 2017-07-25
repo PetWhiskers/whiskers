@@ -5,7 +5,7 @@ import Random from "./Random.js";
 const axios = require("axios");
 
 export default class Query extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {

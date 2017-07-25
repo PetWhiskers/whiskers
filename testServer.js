@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const RandomPet = require("./models/randomizer.js");
+const Pet = require("./models/pets.js");
 
 mongoose.Promise = Promise;
 
@@ -25,18 +26,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/test", function(req, res) {
-	res.send("test.html");
+
+	res.send("/test.html");
 });
 
 app.post("/remove", function(req, res) {
-	RandomPet.remove({}).exec(function(error) {
+	Pet.remove({}).exec(function(error) {
 		if (error) console.log(error);
 		res.send("deleted!");
 	});
 });
 
 app.post("/savePet", function(req, res) {
-	let newPet = new RandomPet(req.body);
+	let newPet = new Pet(req.body);
 	newPet.save(function(error, newPet) {
 		if (error) console.log(error);
 		else res.send("SAVED!");
@@ -44,7 +46,7 @@ app.post("/savePet", function(req, res) {
 });
 
 app.get("/getLikedPets", function(req, res) {
-	RandomPet.find({}).exec(function(error, results) {
+	Pet.find({}).exec(function(error, results) {
 		if (error) console.log(error);
 		res.send(results);
 	});
