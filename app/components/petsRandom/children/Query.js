@@ -16,15 +16,25 @@ export default class Query extends React.Component {
 
 	search(event) {
 		event.preventDefault();
+		axios.post("/remove")
+			.then(function(result) {
+
+			}).catch(function(error) {
+				console.log(error);
+			});
 		let randomPets = [];
 		for (let i = 0; i<10; i++) {
-			let url = "http://api.petfinder.com/pet.getRandom";
+			let random = Math.floor(1000 * Math.random());
+			let url = "http://api.petfinder.com/pet.find";
 			url += "?key=";
 			url += "&animal=";
 			url += $("input:checked").attr("id");
 			url += "&location=";
 			url += $("#location").val();
-			url += "&format=json&output=basic";
+			url += "&offset=";
+			url += random;
+			url += "&count=1&format=json&output=basic";
+			console.log(url);
 			axios.get(url)
 				.then(function(result) {
 					console.log(result);

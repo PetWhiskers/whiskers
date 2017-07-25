@@ -14,43 +14,50 @@ export default class Random extends React.Component {
 		this.savePet = this.savePet.bind(this);
 	}
 
-	// nextPet() {
-	// 	transition.begin(document.getElementById("petImg"), [
-	//         ["transform", "rotate(0)", "rotate(360deg)", "1s"],
-	//         ["background-color", "#ffffff", "#ADB5C7", "1s", function(element, finished) {
-	//             if (!finished) return;
-	//             console.log(this.state.petCount);
-	// 			let next = (this.state.petCount + 1);
-	// 			this.setState({ petCount: next });
-	//             transition.begin(document.getElementById("petImg"), ["background-color", "#ADB5C7", "#ffffff", "1s"]);
-	//         }.bind(this)]
-	//     ], {
-	//         timingFunction: "linear"
-	//     });
-	// }
+	getLikedPets() {
+		axios.get("/getLikedPets")
+			.then(function(results) {
+				console.log(results);
+				let likedPets = $("<div>");
+				for (let i = 0; i < results.data.length; i++) {
+					likedPets.append("Name : " + results.data[i].name);
+				}
+				console.log(likedPets);
+				$("#likedPetsDiv").html(likedPets);
+			}).catch(function(error) {
+				console.log(error);
+			});
+	}
 
 	nextPet(event) {
 		event.preventDefault();
 		$("#petImg").attr("class", "animate");
 		let next = (this.state.petCount + 1);
 		this.setState({ petCount: next });
-		setTimeout(function() {
-			$("#petImg").attr("class", "still");
-		}, 2000);
+		if (next !== 10) {
+			setTimeout(function() {
+				$("#petImg").attr("class", "still");
+			}, 2000);
+		} else if (next == 10) {
+			$(".glyphicon").css("display", "none");
+			$("#petImg").css("display", "none");
+			$("#petName").css("display", "none");
+			this.getLikedPets();
+		}
 	}
 
 	savePet(event) {
 		event.preventDefault();
-		axios.post(path.join(__dirname, "savePet"), {
-				age: this.props.randomPets[this.state.petCount].data.petfinder.pet.age.$t,
-				city: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.city.$t,
-				description: this.props.randomPets[this.state.petCount].data.petfinder.pet.description.$t,
-				email: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.email.$t,
-				name: this.props.randomPets[this.state.petCount].data.petfinder.pet.name.$t,
-				sex: this.props.randomPets[this.state.petCount].data.petfinder.pet.sex.$t,
-				size: this.props.randomPets[this.state.petCount].data.petfinder.pet.size.$t,
-				state: this.props.randomPets[this.state.petCount].data.petfinder.pet.contact.state.$t,
-				type: this.props.randomPets[this.state.petCount].data.petfinder.pet.animal.$t
+		axios.post("/savePet", {
+				age: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.age.$t,
+				city: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.city.$t,
+				description: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.description.$t,
+				email: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.email.$t,
+				name: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.name.$t,
+				sex: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.sex.$t,
+				size: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.size.$t,
+				state: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.contact.state.$t,
+				type: this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.animal.$t
 			}).then(function(result) {
 				console.log(result);
 			}.bind(this)).catch(function(error) {
@@ -70,11 +77,12 @@ export default class Random extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="col-xs-8">
-							<h1>{this.props.randomPets[this.state.petCount].data.petfinder.pet.name.$t}</h1>
+							<h1 id="petName">{this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.name.$t}</h1>
 							<br />
-							<img id="petImg" className="still" src={this.props.randomPets[this.state.petCount].data.petfinder.pet.media.photos.photo[3].$t} />
+							<img id="petImg" className="still" src={this.props.randomPets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t} />
 							<br />
 							<span className="glyphicon glyphicon-heart" onClick={this.savePet} /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span className="glyphicon glyphicon-remove" onClick={this.nextPet} />
+							<div id="likedPetsDiv"></div>
 						</div>
 					</div>
 				</div>

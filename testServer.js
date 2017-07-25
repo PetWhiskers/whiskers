@@ -28,11 +28,25 @@ app.get("/test", function(req, res) {
 	res.send("test.html");
 });
 
+app.post("/remove", function(req, res) {
+	RandomPet.remove({}).exec(function(error) {
+		if (error) console.log(error);
+		res.send("deleted!");
+	});
+});
+
 app.post("/savePet", function(req, res) {
 	let newPet = new RandomPet(req.body);
 	newPet.save(function(error, newPet) {
 		if (error) console.log(error);
 		else res.send("SAVED!");
+	});
+});
+
+app.get("/getLikedPets", function(req, res) {
+	RandomPet.find({}).exec(function(error, results) {
+		if (error) console.log(error);
+		res.send(results);
 	});
 });
 
