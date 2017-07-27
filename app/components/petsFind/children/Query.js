@@ -68,20 +68,20 @@ getPets(url) {
                 <label htmlFor="type">What Kind of Pet Are You Looking For?</label>
                 <br/>
                 <fieldset className="type">
-                <input type="radio" name="type" id="dog"/>
-                Dog 
-                <input type="radio" name="type" id="cat"/>
-                Cat 
-                <input type="radio" name="type" id="bird"/>
-                Bird 
-                <input type="radio" name="type" id="horse"/>
-                Horse 
-                <input type="radio" name="type" id="barnyard"/>
-                Barnyard 
-                <input type="radio" name="type" id="reptile"/>
-                Reptile 
-                <input type="radio" name="type" id="smallfurry"/>
-                Small and Furry (e.g., hamster, ferret)
+                <label className="radio-inline"><input type="radio" name="type" id="dog"/>
+                Dog</label>
+                <label className="radio-inline"><input type="radio" name="type" id="cat"/>
+                Cat</label>
+                <label className="radio-inline"><input type="radio" name="type" id="bird"/>
+                Bird</label>
+                <label className="radio-inline"><input type="radio" name="type" id="horse"/>
+                Horse</label>
+                <label className="radio-inline"><input type="radio" name="type" id="barnyard"/>
+                Barnyard</label>
+                <label className="radio-inline"><input type="radio" name="type" id="reptile"/>
+                Reptile</label>
+                <label className="radio-inline"><input type="radio" name="type" id="smallfurry"/>
+                Small and Furry (e.g., hamster, ferret) </label>
                 </fieldset>
               </div>
 
@@ -90,12 +90,12 @@ getPets(url) {
                 <label htmlFor="gender">Gender</label>
                 <br/>
                 <fieldset id="gender">
-								<input type="radio" name="gender" id="M"/>
-								Male
-								<input type="radio" name="gender" id="F"/>
-								Female
-								<input type="radio" name="gender" id="any"/>
-								Any
+								<label className="radio-inline"><input type="radio" name="gender" id="M"/>
+								Male</label>
+								<label className="radio-inline"><input type="radio" name="gender" id="F"/>
+								Female</label>
+								<label className="radio-inline"><input type="radio" name="gender" id=""/>
+								Any</label>
                 </fieldset>
 							</div>
 
@@ -105,14 +105,14 @@ getPets(url) {
                 <label htmlFor="size">Size</label>
                 <br/>
                 <fieldset className="size">
-								<input type="radio" name="size" id="S"/>
-								Small
-								<input type="radio" name="size" id="M"/>
-								Medium
-								<input type="radio" name="size" id="L"/>
-								Large
-								<input type="radio" name="size" id="XL"/>
-								Extra-Large
+								<label className="radio-inline"><input type="radio" name="size" id="S"/>
+								Small</label>
+								<label className="radio-inline"><input type="radio" name="size" id="M"/>
+								Medium</label>
+								<label className="radio-inline"><input type="radio" name="size" id="L"/>
+								Large</label>
+								<label className="radio-inline"><input type="radio" name="size" id="XL"/>
+								Extra-Large</label>
 							</fieldset>
               </div>
               <br/>
