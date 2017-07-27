@@ -12,7 +12,7 @@ export default class Query extends React.Component {
     super(props);
     this.state = {
       // check initial capitalization of "pet"
-      pets: ""
+      pets: []
     };
     this.search = this.search.bind(this);
   }
@@ -36,7 +36,7 @@ export default class Query extends React.Component {
 			url += $("input[name=size]:checked").attr("id");
       url += "&location=";
       url += $("#location").val();
-      url += "&offset=";
+      // url += "&offset=";
       // url += random;
       url += "&count=1&format=json&output=basic";
       console.log(url);
@@ -90,9 +90,9 @@ getPets(url) {
                 <label htmlFor="gender">Gender</label>
                 <br/>
                 <fieldset id="gender">
-								<input type="radio" name="gender" id="male"/>
+								<input type="radio" name="gender" id="M"/>
 								Male
-								<input type="radio" name="gender" id="female"/>
+								<input type="radio" name="gender" id="F"/>
 								Female
 								<input type="radio" name="gender" id="any"/>
 								Any
