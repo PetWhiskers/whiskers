@@ -96,7 +96,7 @@ export default class Pets extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="col-md-6">
-							<h1 id="petName">{this.props.pets[this.state.petCount].data.petfinder.pets.pet.name.$t}</h1>
+						<h1 id="petName">{this.props.pets[this.state.petCount].data.petfinder.pets.pet.name.$t}</h1>
 							<br />
 							<img id="petImg" className="still" src={this.props.pets[this.state.petCount].data.petfinder.pets.pet.media.photos.photo[3].$t} />
 							<br />
