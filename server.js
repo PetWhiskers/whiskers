@@ -1,27 +1,29 @@
 // For WHISKERS
 // dependencies
 
-// var express = require("express");
 const express = require("express");
-
-// var bodyParser = require("body-parser");
-bodyParser = require("body-parser");
-
-// var path = require("path");
-let path = require("path");
+const bodyParser = require("body-parser");
+const path = require("path");
+const mongoose = require("mongoose");
 
 // const RandomPet = require("./models/pets.js");
 const Pet = require("./models/pets.js");
+const RandomPet = require("./models/randomizer.js");
 
 // initializes express
 // Note to self: having trouble between using "var" and "let" --fix
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost:27017");
+
+var db = mongoose.connection;
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // var mongoose = require("mongoose");
-let mongoose = require("mongoose");
+
 // sets mongoose to leverage Promises
-mongoose.Promise = Promise;
+
 // isolate mongo configuration and heroku info
 let db = require("./mongoConfig");
 db = mongoose.connection;
