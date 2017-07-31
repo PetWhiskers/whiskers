@@ -1,11 +1,14 @@
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const Passport = require("passport"	);
+
 
 const RandomPet = require("./models/randomizer.js");
-const Pet = require("./models/pets.js");
-
+// const Pet = require("./models/pets.js");
+const User = require("./models/user.js");//JM added this 7/29
 mongoose.Promise = Promise;
 
 mongoose.connect("mongodb://localhost:27017");
@@ -19,6 +22,8 @@ db.once("open", function() {
 	console.log("Mongoose connection successful.");
 });
 
+
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -29,6 +34,13 @@ app.get("/test", function(req, res) {
 
 	res.send("/index.html");
 });
+
+app.get("/auth", function(req, res) {
+	res.send("/auth.html");
+    app.route("/user").post(users.create);
+		// app.route("/user").post(users.create);
+});
+
 
 app.post("/remove", function(req, res) {
 	Pet.remove({}).exec(function(error) {

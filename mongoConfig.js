@@ -1,6 +1,8 @@
 // Team If you segregate this, you can fork and then creqte your own db and deployment on Heroku if you want.
 
 var mongoose = require("mongoose");
+// You need this: https://hackhands.com/mongodb-crud-mvc-way-with-passport-authentication/
+require('../models/users.js');
 
 // // See docs for Using `mongoose.connect`...
 // var promise = mongoose.connect('mongodb://localhost/myapp', {
