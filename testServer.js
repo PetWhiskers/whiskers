@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 app.get("/test", function(req, res) {
 
-	res.send("/test.html");
+	res.send("/index.html");
 });
 
 app.post("/remove", function(req, res) {

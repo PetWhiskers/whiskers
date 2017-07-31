@@ -38,8 +38,8 @@ export default class Query extends React.Component {
       url += $("#location").val();
       // url += "&offset=";
       // url += random;
-      url += "&count=1&format=json&output=basic";
-      console.log(url);
+      url += "&count=10&format=json&output=basic";
+      // console.log(url);
    let petsToo = this.getPets(url);
    this.setState({pets: petsToo});
    console.log(this.state);  
@@ -47,13 +47,10 @@ export default class Query extends React.Component {
   }
 getPets(url) {
    let pets = [];
-  axios.get(url).then(function(result) {
-        // console.log(result);
+   axios.get(url).then(function(result) {
+        console.log(result);
         // check if initial cap necessary for pets
         pets.push(result);
-        if (pets.length == 10) {
-          return pets;
-        }
       }).catch(function(error) {
         console.log(error);
       });
