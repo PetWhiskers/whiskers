@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 app.get("/test", function(req, res) {
 
-	res.send("/test.html");
+	res.send("/index.html");
 });
 
 app.get("/auth", function(req, res) {

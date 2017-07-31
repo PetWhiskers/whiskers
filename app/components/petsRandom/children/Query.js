@@ -26,7 +26,7 @@ export default class Query extends React.Component {
 		for (let i = 0; i<10; i++) {
 			let random = Math.floor(1000 * Math.random());
 			let url = "http://api.petfinder.com/pet.find";
-			url += "?key=";
+			url += "?key=5974a8605d2508662e64c88fa5150fb9";
 			url += "&animal=";
 			url += $("input:checked").attr("id");
 			url += "&location=";
