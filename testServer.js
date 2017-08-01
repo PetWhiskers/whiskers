@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+
 app.post("/register", function(req, res, next) {
 	console.log(req.body);
     var user = new User(req.body);
@@ -43,6 +44,7 @@ app.post("/register", function(req, res, next) {
             res.json(user);
         }
     });
+	
 });
 
 
