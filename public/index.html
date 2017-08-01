@@ -28,16 +28,27 @@
 </head>
 
 <body>
-    <div class="jumbotron" id="wrapper">
-        <div class="container">
+    <!-- <div class="jumbotron" id="wrapper"> -->
+        <div class="container" id="wrapper">
             <div class="row">
                 <div class="col-md-4"></div>
-                <div class="col-md-4"><img class="center-block" src="./images/WhiskR400.png"></div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4"><img class="center-block" logo src="./images/WhiskR400.png"></div>
+                <div class="col-md-4"><form class=“form-signin” action=“/register” method=“post”>
+            <h3 class=“form-signin-heading text-center”>Login in or Create New Account</h3>
+            <div class ="form-group row">
+           <label for=“email” class=“sr-only”>Username</label>
+            <input type=“email” id=“email” name=“email” class=“form-control” placeholder=“E-mail” required>
+           </div>
+           <div class ="form-group row">
+           <label for=“password” class=“sr-only”>Password</label>
+            <input type=“password” name=“password” id=“password” class=“form-control” placeholder=“Password” required>
+           </div>
+           <button class=“btn btn-lg btn-primary btn-block” type=“submit”>Submit</button>
+          </form></div>
             </div>
         </div>
-    </div>
-    <div class="centered">
+    <!-- </div> -->
+    <!-- <div class="centered">
         <div class=“row”>
       <div class=“col-md-6”>
         <form class=“form-signin” action=“/register” method=“post”>
@@ -53,7 +64,7 @@
           </form>
         </div>
     </div>
-    </div>
+    </div> -->
     <!-- This is where React will deploy the contents it generates -->
     <div id="app"></div>
     <!-- JQuery -->
