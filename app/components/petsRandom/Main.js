@@ -38,14 +38,15 @@ export default class Main extends React.Component {
           </nav>
 
           {/* Jumbotron */}
-          <div className="jumbotron">
-            <h2 className="text-center"><strong>WhiskR</strong></h2>
-            <h3 className="text-center">Find your next pet!</h3>
+          <div className="panel panel-default">
+            <div className="panel-body" id="heading">
+              
+            </div>
           </div>
 
           	<div className="panel panel-primary">
   				<div className="panel-heading">
-    				<h2 className="panel-title"><i className="glyphicon glyphicon-search" aria-hidden="true"></i> <strong>Search for your pet </strong></h2>
+    				<h2 className="panel-title"><i className="fa fa-paw" aria-hidden="true"></i> <strong>Search for your pet </strong></h2>
   				</div>
   				<div className="panel-body">
     				<Query />
@@ -69,7 +70,7 @@ export default class Main extends React.Component {
           <footer>
             <hr />
             <p className="pull-right">
-              <i className="fa fa-github" aria-hidden="true"></i>
+              <i className="fa fa-rocket" aria-hidden="true"></i>
               Built using React.js
             </p>
           </footer>
